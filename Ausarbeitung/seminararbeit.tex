@@ -1,22 +1,19 @@
-\documentclass[12pt]{report}
+\documentclass[12pt]{scrartcl}
 \usepackage[utf8]{inputenc}
 \usepackage{a4}
 \usepackage[none]{hyphenat} %hyphenation
 \sloppy
 \usepackage{parskip} %no indentation after paragraphs
 \usepackage{umlaute}
-\usepackage{afterpage} %for using \afterpage{\clearpage} (don't push images to the end of a chapter)
+\usepackage{afterpage} %for using \afterpage{\clearpage} (don't push images to the end of a {\tiny chapter})
 \usepackage{makeidx}
 \usepackage[numbers]{natbib}
 \usepackage{graphicx}
 \usepackage{picins} %provides precise control over the placement of inline graphics
 \usepackage{setspace}
-\usepackage{titlesec}
 \usepackage{dsfont} %math symbols
 \usepackage{tabularx}
 \usepackage{floatflt} %float text around figures and tables
-% Florian Schulze, 06.06.2012
-% v1.0, latest edit: 06.06.2012
 
 \usepackage{enumitem} %resume counting from previous enumerate block
 \usepackage{amsmath,amssymb}
@@ -27,7 +24,7 @@
 \usepackage{algorithm} %wrap algpseudocode and enrich with label etc.
 \usepackage{float} % for [H] after floats
 
-\titleformat{\paragraph}[hang]{\normalfont\bfseries}{\theparagraph}{.5em}{}
+
 
 \makeindex
 \frenchspacing
@@ -98,16 +95,8 @@
 	\end{figure}
 	\bigskip 
 \end{center}
-\vfill
 
 \newpage
-\setcounter{page}{1}
-\hoffset=0mm
-\bibliographystyle{wmaainf} % quotation style
-\setcounter{tocdepth}{3}
-\setcounter{secnumdepth}{3}
-\fboxsep 0mm
-
 \tableofcontents
 
 \newpage
@@ -123,15 +112,8 @@
 \thispagestyle{empty}
 \null
 
-\newpage
-\addcontentsline{toc}{chapter}{List of figures}
-\listoffigures
 
 %\input{appendices}
-
-\newpage
-\thispagestyle{empty}
-\null
 	
 % Generierung des Literaturverzeichnisses
 %\bibliography{/path/to/your/.bib/file}
