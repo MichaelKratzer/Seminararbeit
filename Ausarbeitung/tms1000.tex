@@ -89,7 +89,45 @@ Subroutinen sind sehr {\"a}hnlich zu Branch Instruktionen. Bei einer erfolgreich
 
 Der RAM-Speicher besteht aus 4 Dateien, welche jede 16 W{\"o}rter enthalten. Jedes Wort ist dabei 4 Bit gro{\ss}. Der Speicher wird durch 2 Register X und Y adressiert. Das X-Register gibt dabei die Datei an, das Y-Register das Wort.\\
 Der Input erfolt durch den Write-Multiplexer. Sowohl das Akkumulator Register, als auch die Constant and K Input Logic (CKI) k{\"o}nnen in den Speicher schreiben. Der Read-Bus {\"u}bernimmt den Output des RAMs. Der Bus schreibt die das Wort entweder in den P-Multiplexer oder den N-Multiplexer, welche beide in die Recheneinheit f{\"u}hren. Die Recheneinheit leitet die Daten entweder in das Y oder Akkumulator Register. \\
-Dem Programmierer des Controllers steht es frei, wie er sich den Speicher einteilt. Typischerweise werden die ersten 7 W{\"o}rter jeder Seite f{\"u}r als Register verwendet. Der Rest wird durch beispielsweise Pointer, Event Counter oder Flags bef{\"u}llt. Diese sollten sich wenn m{\"o}glich
+Dem Programmierer des Controllers steht es frei, wie er sich den Speicher einteilt. Typischerweise werden die ersten 7 W{\"o}rter jeder Seite f{\"u}r als Register verwendet. Der Rest wird durch beispielsweise Pointer, Event Counter oder Flags bef{\"u}llt. Diese sollten sich wenn m{\"o}glich in der gleichen Datei gespeichert sein, in der auch die Register liegen mit dem sie interagieren.
+
+\subsubsection{Constant \& K Input Logic}
+
+Die CKI Logik selektiert entweder die 4 K-Input Bits oder eine 4-Bit Konstante aus dem ROM und legt diese auf den CKI Daten Bus. Die Konstanten, welche aus dem ROM geliefert werden, werden f{\"u}r Befehle verwendet, welche Konstanten in ihrem Opcode enthalten. Zum Beispiel die Instruktion A8AAC. Diese Instruktion addiert die Zahl 8 zu dem Inhalt des Akkumulators und speichert das Ergebnis wiederum im Akkumulator. Der CKI Daten Bus kann die das 4-Bit Wort entweder in einen der beiden Adder leiten, die zur Recheneinheit f{\"u}hren, oder {\"u}ber den Write-Multiplexer in den RAM-Speicher.
+
+\subsubsection{Y-Register}
+
+Das Y-Register addressiert zusammen mit dem X-Register den RAM-Speicher. Au{\ss}erdem addressiert das Register das R-Output Register, welches die individuellen Latches setzt und resettet. Das Y-Register wird zus{\"a}tzlich als Arbeitsregister bezeichnet, da tempor{\"a}r ROM W{\"o}rter gespeichert werden k{\"o}nnen und sich das Register sehr gut als Counter eignet.
+
+\subsubsection{R- und O-Output}
+
+Der TMS-1000 hat zwei verschiede Arten an Output, R und O. Die R-Outputs werden f{\"u}r Kontroll Daten verwendet. Diese Kontroll Daten werden f{\"u}r externe Ger{\"a}te verwendet oder Status-Logic-Outputs, wie zum Beispiel Overflow. \\
+Das O-Output Register enth{\"a}lt den Inhalt des Akkumulators, sowie das Status-Logic-Bit. Durch ein PLA\footnote{Programmable Logic Array} werden die 5 Bits zu den 8 Output-Bits kodiert. Der Programmierer kann dabei selbst bestimmen wie er die Ein- und Ausg{\"a}nge verbindet. Das O-Output Register wird generell f{\"u}r die Ausgabe von Daten benutzt im Gegensatz zum R-Output Register.
+
+\subsubsection{Akkumulator \& ALU - Aritmethic Logic Unit}
+
+Das Akkumulator Register ist sehr wichtig, da es mit der ALU dem RAM-Speicher und dem O-Output Register interagiert. Haupts{\"a}chlich wird das Register f{\"u}r Additionen und Substraktionen verwendet. Au{\ss}erdem werden im Akkumulator Konstanten zwischengespeichert und alle Variablendaten, die in den RAM-Speicher geschrieben werden sollen, m{\"u}ssen den Akkumulator durchlaufen. \\
+Die ALU ist ein 4-Bit Adder und Komparator. Er kann addieren, subtrahieren und logische Vergleiche. Seine Inputs bekommt die Einheit durch 2 4-Bit Multiplexer, die ihren Inhalt durch das Y-Register, die CKI, den RAM-Speicher oder den Akkumulator bekommen. Das Ergebnis wird je nach Instruktion entweder im Y-Register oder Akkumulator gespeichert. Die Substraktion wird durch die two's complement arithmetic ausgef{\"u}hrt. Bei dieser Arithmetik wird der Subtrahend invertiert und auf den Minuend addiert. \\
+Die ALU setzt au{\ss}erdem das Status-Logic-Bit. Das Bit kann nicht nur bei logischen Vergleichen gesetzt werden, sonder kann auch bei arithmetischen Operationen als Carry gesetzt werden f{\"u}r beispielsweise {\"U}bertr{\"a}ge.
+\\
+
+\begin{figure}[!htb]
+	\centering
+		\includegraphics[width=0.75\textwidth]{figures/ALU_TMS1000.PNG}
+	\caption{Eine Skizze der arithmetisch logischen Einheit}
+	\label{fig:ALU_TMS1000}
+\end{figure}
+
+\subsubsection{Instruction-Decoders}
+
+Der TMS-1000 enth{\"a}lt zwei logische Bl{\"o}cke, die jeweils die 8-Bit Instruktionen in die verschiedenen Mikroinstruktionen dekodiert. Der erste Decokodierer, der "`Fixed instruction decoder"', kann nicht modifiziert werden und aktiviert 12 fixierte Mikroinstruktionen. \\
+Die restlichen 31 Basis Instruktionen sind die programmierbaren Instruktionen. Diese werden durch den zweiten Dekodierer, den "`Programmable instruction PLA"', definiert. Standardm{\"a}{\ss}ig sind diese f{\"u}r den Programmierer vordefiniert. Sie k{\"o}nnen aber auch durch das umprogrammieren des PLAs umdefiniert werden. Dabei stehen dem Dekodierer 16 Mikroinstruktionen zur Verf{\"u}gung, die beliebig kombiniert werden k{\"o}nnen.
+
+\section{Befehlssatz}
+
+
+
+
 
 
 
