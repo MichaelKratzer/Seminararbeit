@@ -154,5 +154,13 @@ Die Berechnungen werden in Binärarithmetik ausgeführt. Es ist aber auch mögli
 
 \subsection{Der Befehlszyklus}
 \label{ch:befehlszyklus}
+Der Befehlszyklus ist eine definierte Abfolge von Schritten, die dazu führen dass eine Instruktion ausgeführt wird. Jeder Befehlszyklus besteht aus 8 Takten. Ein Befehlszyklus beginnt mit einer steigenden Flanke des SYNC-Signals. In den ersten drei Takten $A_1$ - $A_3$ wird die auszuführende Instruktion im ROM adressiert. In $A_1$ und $A_2$ wird die Adresse auf dem Chip versendet und in $A_3$ die Nummer des Chips auf dem sich die Speicherzelle befindet. Zusätzlich wird in $A_3$ die CM-ROM Signallinie aktiviert. Die folgenden zwei Takte $M_1$ und $M_2$ werden dazu verwendet die 8 Bit Instruktion aus dem ROM in den Prozessor zu laden. In den letzten drei Takten $X_1$ - $X_3$ werden die Instruktionen ausgeführt. Zum Beispiel werden hier Adressen an RAM Chips geschickt.
+ \begin{figure}[h]
+ 	\centering
+ 	\includegraphics[width=1\textwidth]{figures/instruction_cycle.png}
+ 	\caption{Der Befehlszyklus des MCS-4}
+ 	\label{fig:cycle}
+ \end{figure}
 
 \subsection{Der Befehlssatz}
+\label{ch:befehlssatz}
