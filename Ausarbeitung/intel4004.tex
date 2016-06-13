@@ -1,16 +1,16 @@
 \newpage
-\section{Der Intel 4004}
-
+\chapter{Der Intel 4004}
+\newpage
+\section{Die Geschichte und Entwicklung des 4004}
 Der 4004 ist der erste von Intel entwickelte Mikroprozessor und einer der Ersten überhaupt. Er gilt als einer der großen Meilensteine, die den Siegeszug der Computer einleitete. Schon Jahre vor seiner Entwicklung fingen Halbleiterchips an, die alten Elektronenröhren Rechner abzulösen. Durch die schnell voranschreitende Miniaturisierung von Transistoren ließen sich immer komplexere Logik Konstruktionen auf immer kleineren Chips umsetzen. Was vielversprechend begann, stellte sich allerdings bald als Problem heraus. Als die Komplexität und Spezialisierung einzelner Designs so stark zunahm, dass es nicht mehr kosteneffizient war manche Designs umzusetzen. Die Chips waren so spezialisiert geworden, dass die geringe Absatzmenge nicht die Entwicklungskosten rechtfertigte. Deshalb war es nur eine Frage der Zeit bis ein Universalrechner aus Silizium gebaut wurde. Deshalb beschäftigt sich der folgende Abschnitt mit der Geschichte des Intel 4004 und den Personen, die maßgeblich zu seiner Entwicklung beigetragen haben.
- 
-\subsection{Die Geschichte und Entwicklung des 4004}
+
 
 Als im Sommer 1969 Busicom, ein japanischer Hersteller von elektrischen Rechenmaschinen, das Unternehmen Intel damit beauftragte die Chips für ihre neue Reihe von Rechenmaschinen zu produzieren, war Intel gerade mal ein Jahr alt. Das Unternehmen war spezialisiert auf die Herstellung von Halbleiter Speicherchips und hatte zum Zeitpunkt des Auftrags nur zwölf Mitarbeiter. Intel war zu dieser Zeit, auf Grund von fehlenden Absatzzahlen ihrer Speicherchips, in einem finanziellen Engpass und sah sich gezwungen die Arbeit anzunehmen.
 \vspace{-24pt}
 \begin{wrapfigure}{r}{0.6\textwidth}
 	\vspace{20pt}
 	\includegraphics[width=0.6\textwidth]{figures/creators1.jpeg}
-	\caption{v.l.n.r Mazor, Hoff und Shima}
+	\caption{Mazor, Hoff und Shima}
 	\label{fig:creators1}
 	\vspace{-20pt}
 \end{wrapfigure}
@@ -47,10 +47,11 @@ Nach 9 Monaten harter Arbeit hatte Faggin es geschafft und es lagen die ersten f
 Nach dem beheben einiger kleiner Fehler wurden die Chips an Busicom geliefert und wie geplant in den Rechenmaschinen eingesetzt. Einer der ersten Rechner, der das MCS-4 benutzte war der Busicom 141-PF. Er enthielt den 4004, 4 ROM-Chips mit dem Schon im Sommer 1971 kam
  Busicom allerdings erneut auf Intel zu um die Produktionskosten der Chips zu reduzieren. Auf Grund von steigender Konkurrenz und fallenden Preisen war Busicom nicht mehr konkurrenzfähig und in finanziellen Problemen. Nach langen Diskussionen der Intel Führungsebene entschloss sich das Unternehmen auf Grund des vielfältigen Einsetzbarkeit des Prozessors die Rechte an dem Prozessor von Busicom für {\$}60.000 zurückzukaufen. So konnte Intel im Frühjahr 1971 die Chipreihe auf den Markt bringen und so der Öffentlichkeit zugänglich machen. Währenddessen lief schon die Entwicklung des Intel 8008, des ersten Intel 8-Bit Prozessors. Dieser profitierte klar von dem Design des 4004 und führte später zu Intels Erfolg.
  
-\subsection{Die Architektur des MCS-4}
+\section{Die Architektur des MCS-4}
 Unter dem MCS-4 veröffentlichte Intel in 1971 eine Sammlung von vier Chips. Die Chips waren durchnummeriert von 4001 bis 4004 und stellten den ersten Universalcomputer auf Halbleiterbasis da. Das minimale System besteht aus nur einer CPU, dem 4004 und einem ROM. Es können allerdings bis zu 16 ROM und 16 RAM Chips angeschlossen werden. Verbunden werden diese Chips über einen 4 Bit breiten Bus. Der Prozessor kann zudem die anderen Chips durch Kontrollleitungen steuern. Als Schaltungskonzept wurde eine Mischung aus von Neumann und Harvard Architektur umgesetzt. Eigentlich Konkurrenzarchitekturen vereint das MCS-4 Ansätze von beidem, in dem es wie in der Harvard Architektur üblich Programm- und Datenspeicher trennt, aber trotzdem beide Speicher über den selben Bus angeschlossen sind. Dadurch lassen sich Befehle und Daten nur sequentiell anstatt parallel laden. Die folgenden Abschnitte befassen sich mit dem Aufbau der einzelnen Chips.
 
-\subsubsection{Der 4001}
+\subsection{Der 4001}
+
  \begin{floatingfigure}[r]{.5\textwidth}
  	\vspace{-10pt}
  	\includegraphics[width=0.5\textwidth]{figures/pins_4001.png}
@@ -67,7 +68,7 @@ Unter dem MCS-4 veröffentlichte Intel in 1971 eine Sammlung von vier Chips. Die
  \end{figure}
 Diese werden über das Clear-Signal gelöscht. Die Ein- und Ausgaberegister sind Teil der zweiten Funktionalität des Intel 4001. In seiner zweiten Funktion kann es auch als Schnittstelle zu Peripheriegeräten dienen. Dazu gibt es 4 weitere Leitungen an den Pins 13 - 16. In \ref{fig:layout_4001} ist zu sehen,dass es möglich ist jeden Pin individuell als Input oder als Output Port zu definieren. Über den internen Bus des 4001 werden Daten entweder direkt zu den I/O-Registern geliefert, oder wenn eine Adresse am Bus anliegt im Adressregister gespeichert. Nachdem die Adresse vollständig angekommen ist, wird sie dekodiert und die Instruktion aus dem ROM über einen Multiplexer wieder zurück auf den Datenbus geschrieben.
 
-\subsubsection{Der 4002}
+\subsection{Der 4002}
 Der Intel 4002 ist das Gegenstück zu 4001. Während der eine die Programmdaten speichert, dient der 4002 als Datenspeicher. Im Vergleich zum 4001 besitzt dieser Chip weiter weniger Speicher. Nur 320 Bit stehen zur Verfügung aufgeteilt in 4 Register. Jedes dieser Register besteht aus 20 4-Bit Wörtern. Davon können 16 zum speichern von Daten
 \vspace{-23pt}
  \begin{floatingfigure}[r]{.5\textwidth}
@@ -117,7 +118,7 @@ Dabei sind D0 - D3 die vier Bits die gleichzeitig auf den 4 Datenbuslinien liege
  
  Nachdem die Adresse angekommen ist, wird sie wie beim 4001 in einem Adressenregister zwischengespeichert und dekodiert. Danach wird im nächsten Befehlszyklus der Wert der entsprechenden Speicherzelle auf den Datenbus gelegt. Wie der Intel 4001 besitzt auch der 4002 4 Output Pins. Auch hier können Peripheriegeräte angeschlossen werden. Alle Register sowie der Speicher werden gelöscht wenn das Reset-Signal für mehr als 32 Befehlszyklen aktiviert wird.
 
-\subsubsection{Der 4003}
+\subsection{Der 4003}
  \begin{floatingfigure}[r]{.5\textwidth}
  	\vspace{-10pt}
  	\includegraphics[width=0.5\textwidth]{figures/pins_4003.png}
@@ -125,42 +126,74 @@ Dabei sind D0 - D3 die vier Bits die gleichzeitig auf den 4 Datenbuslinien liege
  	\label{fig:pins_4003}
  \end{floatingfigure}
 Der dritte Chip aus der Reihe ist Intel 4003. Er besteht hauptsächlich aus einem 10 Bit Schieberegister. Der Chip wurde entworfen um die Ein- und Ausgabemöglichkeiten des Systems zu erweitern. Während der 4002 schon über Ausgabe und der 4001 sowohl über Aus- als auch Eingabe Möglichkeiten verfügt, gibt es immer noch Fälle in denen diese Pins nicht ausreichen. Deshalb können die 4003 Chips an diese Pins angeschlossen werden. Über den Serial-Input Pin wird das Schieberegister mit Daten befüllt. Über den CP-Pin wird das verschieben der Bits innerhalb des Registers gesteuert. Bei jeder Verschiebung wird das letzte Bit auf den seriellen Ausgang geschrieben. Die Daten aus dem Schieberegister können auch parallel ausgelesen werden. Dazu stehen 10 weitere Pins zur Verfügung.
- \begin{figure}[h]
+ \begin{figure}[H]
  	\centering
  	\includegraphics[width=0.7\textwidth]{figures/layout_4003.png}
  	\caption{Layout des Intel 4003}
  	\label{fig:layout_4003}
  \end{figure}
+ 
 Die parallele Ausgabe wird mit Hilfe des Enable-Signal gesteuert. 
 Wenn es aktiviert wird, werden alle 10 Bits gleichzeitig über die Pins $Q_0$ bis $Q_9$ ausgegeben. Um mehr Geräte wie Tastaturen, Displays oder Drucker anschließen zu können, können mehrere dieser Chips hintereinander geschaltet werden, so dass ein vielfaches der 10 Pins erreicht werden können.
 
-\subsubsection{Der 4004}
- \begin{floatingfigure}[r]{.5\textwidth}
- 	\vspace{-10pt}
- 	\includegraphics[width=0.5\textwidth]{figures/pins_4004.png}
- 	\caption{Pins des Intel 4004}
- 	\label{fig:pins_4004}
- \end{floatingfigure}
+\subsection{Der 4004}
+\begin{floatingfigure}[Hr]{.5\textwidth}
+	\vspace{-10pt}
+	\includegraphics[width=0.5\textwidth]{figures/pins_4004.png}
+	\caption{Pins des Intel 4004}
+	\label{fig:pins_4004}
+\end{floatingfigure}
 Der Intel 4004 ist das Kernstück des Systems. Der Chip ist eine CPU und wurde entworfen um mit den anderen Chips zusammenzuarbeiten und sie zu steuern. Er bearbeitet die Befehle, welche im 4001 ROM gespeichert sind. Dazu muss müssen die Befehle erst aus dem ROM geladen werden.
-Dazu wird die Adresse über den Datenbus an die ROMs verschickt und das CM-ROM Signal aktiviert. Wenn der aktuelle Befehl geladen wurde, wird er im Instruktionsregister gespeichert. Das Register besteht aus zwei 4 Bit Wörtern. Die ersten 4 geladenen Bit enthalten den Opcode und werden im OPR Teil des Registers gespeichert. Die zweiten Vier enthalten den Modifier. Er wird im OPA Teil des Registers gespeichert und enthält Adressen oder Daten, auf denen der Befehl ausgeführt wird. Direkt an das Register ist der Dekodierer angeschlossen, der die Instruktion dekodiert um sie ausführen zu können. Der zweite große Bestandteil des 4004 ist das Indexregister. Das Indexregister ist ein interner Cache zur Speicherung von Zwischenergebnissen und Instruktionen. Dazu können die 64 Bit auf zwei verschiedene benutzt werden. Sie sind in 8 Reihen mit jeweils 8 Bit pro Reihe organisiert. Trotzdem können 16 verschiedene Zellen mit 4 Bit adressiert werden. Dadurch können sowohl 4 Bit Daten oder eine Reihe von 8 Bit als Instruktion oder Adresse ausgelesen werden. Das Adressenregister des Intel 4004 besteht aus 4 mal 12-Bit RAM. In einer dieser 12 Bit Speicherzellen liegt die aktuelle Programmadresse. Die zusätzlichen 3 Zellen werden benutzt um Adressen für Subroutinen zu speichern. Das bedeutet, dass bei der Programmierung des Prozessors bis zu 3 Subroutinen verschachtelt werden können.
-Der vierte und letzte große Teil der CPU ist die ALU (Arithmetic Logical Unit). Die ALU besteht aus einem 4 Bit Addierer und einem Akkumulator inklusive eine Carry Flip-Flop. Der erste Term für die Addition/Subtraktion kommt aus einem Register, das über den internen Datenbus gefüllt wird. Der zweite Term kommt aus dem Akkumulator. Das Ergebnis der Berechnung wird wieder im Akkumulator gespeichert und das Carry-Bit gesetzt, falls ein Überlauf auftritt.
+Dazu wird die Adresse über den Datenbus an die ROMs verschickt und das CM-ROM Signal aktiviert. Wenn der aktuelle Befehl geladen wurde, wird er im Instruktionsregister gespeichert. Das Register besteht aus zwei 4 Bit Wörtern. 
+Die ersten vier geladenen Bit enthalten den Opcode und werden im OPR Teil des Registers gespeichert. Die zweiten Vier enthalten den Modifier. Er wird im OPA Teil des Registers gespeichert und enthält Adressen oder Daten, auf denen der Befehl ausgeführt wird. Direkt an das Register ist der Dekodierer angeschlossen, der die Instruktion dekodiert um sie ausführen zu können. Der zweite große Bestandteil des 4004 ist das Indexregister.
+ Das Indexregister ist ein interner Cache zur Speicherung von Zwischenergebnissen und Instruktionen.
+ Dazu können die 64 Bit auf zwei verschiedene benutzt werden. Sie sind in 8 Reihen mit jeweils 8 Bit pro Reihe organisiert. Trotzdem können 16 verschiedene Zellen mit 4 Bit adressiert werden. Dadurch können sowohl 4 Bit Daten oder eine Reihe von 8 Bit als Instruktion oder Adresse ausgelesen werden. 
+Der dritte große Teil der CPU ist die ALU (Arithmetic Logical Unit). Die ALU besteht aus einem 4 Bit Addierer und einem Akkumulator inklusive eine Carry Flip-Flop. Der erste Term für die Addition/Subtraktion kommt aus einem Register, das über den internen Datenbus gefüllt wird. Der zweite Term kommt aus dem Akkumulator. Das Ergebnis der Berechnung wird wieder im Akkumulator gespeichert und das Carry-Bit gesetzt, falls ein Überlauf auftritt.
+Die Berechnungen werden in Binärarithmetik ausgeführt. Es ist aber auch möglich einen \textit{Decimal Adjust} durchzuführen. Mit seiner Hilfe lassen sich Binärzahlen in so genannte Binary-Coded-Decimal Zahlen umwandeln. In dieser Art der Zahlendarstellung wird jede Dezimalstelle einer Zahl durch 4 Bit dargestellt. In diesen 4 Bit werden nur die Zahlen von 0-9 verwendet. Dazu wird nach der Addition zweier in BCD-Zahlen die Zahl 6 aufaddiert. Bei einer Addition die als Ergebnis eine Zahl über 9 liefert, kann dann nach dem \textit{Decimal Adjust} die Zahl in zwei 4 Bit Teile aufgeteilt werden, die dann dem Ergebnis wieder als BCD-Zahlen entsprechen. Als Beispiel hier die Rechnung 9 + 8:
+\begin{table}[H]
+	\centering
+	\begin{tabular}{c c c c c}
+		1001 & + & 1000 & = & 10001 \\
+		9 & + & 8  & = & 17 \\
+		& & & & \\
+		10001 & + & 0110 & = & 00010111 = 0001 0111 \\
+		17 & + & 6 & = & 23 = 17
+	\end{tabular}
+\end{table}
+
+Das Adressenregister des Intel 4004 besteht aus 4 mal 12-Bit RAM. In einer dieser 12 Bit Speicherzellen liegt die aktuelle Programmadresse. Die zusätzlichen 3 Zellen werden benutzt um Adressen für Subroutinen zu speichern. Das bedeutet, dass bei der Programmierung des Prozessors bis zu 3 Subroutinen verschachtelt werden können.
  \begin{figure}[h]
  	\centering
  	\includegraphics[width=0.7\textwidth]{figures/layout_4004.png}
  	\caption{Layout des Intel 4004}
  	\label{fig:layout_4004}
  \end{figure}
-Die Berechnungen werden in Binärarithmetik ausgeführt. Es ist aber auch möglich einen \textit{Decimal Adjust} durchzuführen. Mit seiner Hilfe lassen sich Binärzahlen in so genannte Binary-Coded-Decimal Zahlen umwandeln. In dieser Art der Zahlendarstellung wird jede Dezimalstelle einer Zahl durch 4 Bit dargestellt. In diesen 4 Bit werden nur die Zahlen von 0-9 verwendet.
+ 
 
-\subsection{Der Befehlszyklus}
+\section{Der Befehlszyklus}
 \label{ch:befehlszyklus}
-Der Befehlszyklus ist eine definierte Abfolge von Schritten, die dazu führen dass eine Instruktion ausgeführt wird. Jeder Befehlszyklus besteht aus 8 Takten. Ein Befehlszyklus beginnt mit einer steigenden Flanke des SYNC-Signals. In den ersten drei Takten $A_1$ - $A_3$ wird die auszuführende Instruktion im ROM adressiert. In $A_1$ und $A_2$ wird die Adresse auf dem Chip versendet und in $A_3$ die Nummer des Chips auf dem sich die Speicherzelle befindet. Zusätzlich wird in $A_3$ die CM-ROM Signallinie aktiviert. Die folgenden zwei Takte $M_1$ und $M_2$ werden dazu verwendet die 8 Bit Instruktion aus dem ROM in den Prozessor zu laden. In den letzten drei Takten $X_1$ - $X_3$ werden die Instruktionen ausgeführt. Zum Beispiel werden hier Adressen an RAM Chips geschickt.
- \begin{figure}[h]
+Der Befehlszyklus ist eine definierte Abfolge von Schritten, die dazu führen dass eine Instruktion ausgeführt wird. Jeder Befehlszyklus besteht aus 8 Takten. Ein Befehlszyklus beginnt mit einer steigenden Flanke des SYNC-Signals. In den ersten drei Takten $A_1$ - $A_3$ wird die auszuführende Instruktion im ROM adressiert. In $A_1$ und $A_2$ wird die Adresse auf dem Chip versendet und in $A_3$ die Nummer des Chips auf dem sich die Speicherzelle befindet. Zusätzlich wird in $A_3$ die CM-ROM Signallinie aktiviert. Die folgenden zwei Takte $M_1$ und $M_2$ werden dazu verwendet die 8 Bit Instruktion aus dem ROM in den Prozessor zu laden. In den letzten drei Takten $X_1$ - $X_3$ werden die Instruktionen ausgeführt. Zum Beispiel werden hier Adressen an RAM Chips geschickt, Berechnungen ausgeführt oder Daten von Ein- und Ausgabe Operationen gespeichert.
+ \begin{figure}[ht]
  	\centering
  	\includegraphics[width=1\textwidth]{figures/instruction_cycle.png}
  	\caption{Der Befehlszyklus des MCS-4}
  	\label{fig:cycle}
  \end{figure}
 
-\subsection{Der Befehlssatz}
+\section{Der Befehlssatz}
 \label{ch:befehlssatz}
+Der Befehlssatz enthält alle Instruktionen, die der Intel 4004 ausführen kann. Ein Befehl ist normalerweise 8 Bit lang und besteht aus dem Opcode und dem Modifier. Befehle mit 8 Bit Länge haben drei mögliche Besetzungen für das Modifier Feld. Zum einen kann es die Adresse einer der 16 Speicherzellen des Indexregisters enthalten. Das sind Befehle wie die arithmetischen Operationen, die den Inhalt dieser Adresse mit dem Wert des Akkumulators verrechnen. Die zweite Möglichkeit ist die Adresse eines 8 Bit Wortes innerhalb des Indexregisters. Das \textit{Least-significant-bit} kann hier entweder auf 0 oder 1 gesetzt werden. Das wird als Erweiterung des Opcodes verwendet. 
+\begin{figure}[h]
+	 	\centering
+	 	\includegraphics[width=0.5\textwidth]{figures/instruction_one.png}
+	 	\caption{Befehle mit einem Wort Länge}
+	 	\label{fig:instructions1}
+\end{figure}
+Befehle die diese Struktur verwenden sind SRC, welcher den Wert als Adresse verwendet und an ROM und RAM versendet, oder JIN, welcher zu dieser Adresse im Programmspeicher springt. Als letztes gibt es noch die Möglichkeit Daten zu übertragen. LDM lädt beispielsweise die zweiten 4 Bit der Instruktion in den Akkumulator.
+Fünf der insgesamt 45 Befehle bestehen aus 16 anstatt 8 Bit. Sie können deshalb nicht in einem Befehlszyklus bearbeitet werden. Die erste und einfachste Variante ist einfach der Sprungbefehl JUN. Mit diesem Befehl wird ein Sprung zu der Adresse in den drei folgenden Wörtern nach dem Opcode ausgeführt. Eine Adresse besteht normalerweise immer aus 12 Bit und benötigt deshalb zwei Befehlszyklen um geladen zu werden.
+\begin{figure}
+	 	\centering
+	 	\includegraphics[width=0.8\textwidth]{figures/instruction_two.png}
+	 	\caption{Befehle mit doppelter Wort Länge}
+	 	\label{fig:instructions2}
+\end{figure}

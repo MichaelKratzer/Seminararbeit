@@ -1,4 +1,4 @@
-\documentclass[12pt]{scrartcl}
+\documentclass[12pt]{report}%{scrartcl}
 \usepackage[utf8]{inputenc}
 \usepackage{a4}
 \usepackage[none]{hyphenat} %hyphenation
@@ -16,8 +16,7 @@
 \usepackage{float}
 \usepackage{floatflt} %float text around figures and tables
 \usepackage{wrapfig}
-
-
+%\usepackage[backend=biber]{biblatex}
 \usepackage{enumitem} %resume counting from previous enumerate block
 \usepackage{amsmath,amssymb}
 \usepackage[format=default,font=footnotesize,labelfont=bf]{caption}
@@ -26,8 +25,27 @@
 \usepackage{algpseudocode} %for listing pseudocode
 \usepackage{algorithm} %wrap algpseudocode and enrich with label etc.
 \usepackage{float} % for [H] after floats
+\usepackage{titlesec}
+\usepackage[ngerman]{babel}
+
+\begin{filecontents}{test.bib}
+	@Book{book,
+		author = {Autor},
+		title = {Titel},
+		publisher = {Verlag},
+		year = {2222},
+	}
+	@MISC{misc,
+		author = {Autor},
+		title = {Titel},
+		howpublished = {Howpublished},
+		year = {2222},
+	}
+\end{filecontents}
 
 
+
+\titleformat{\paragraph}[hang]{\normalfont\bfseries}{\theparagraph}{.5em}{}
 
 \makeindex
 \frenchspacing
@@ -41,35 +59,6 @@
 \topmargin0cm
 \oddsidemargin0cm
 \evensidemargin0cm
-
-
-
-
-\newcommand{\bildklein}[3]{  
-	\begin{figure}[hp]
-	\begin{center}
-	\includegraphics[width=0.5\textwidth]{#1}
-	\end{center}
-	\caption[#2]{#3}
-	\end{figure}
-}
-  	
-\newcommand{\bildgross}[3]{  
-	\begin{figure}[hp]
-	\begin{center}
-	\includegraphics[width=0.95\textwidth]{#1}
-	\end{center}
-	\caption[#2]{#3}
-	\end{figure}
-}
-  
-
-\newcommand{\eqn}[3]{
-	\begin{figure}[hp]
-	\begin{equation}#1\end{equation}
-	\caption[#2]{#3}
-	\end{figure}
-}
 
 \input{figures/tumlogo}
 
@@ -104,7 +93,7 @@
 \end{center}
 
 \newpage
-\setcounter{tocdepth}{4}
+\setcounter{tocdepth}{2}
 \tableofcontents
 
 \newpage
@@ -114,16 +103,21 @@
 	\input{einleitung}
 	\input{intel4004}
 	\input{tms1000}
-	\input{schluss}
 \end{spacing}
+
+%List of Figures/Tables
 \newpage
-\thispagestyle{empty}
-\null
+\addcontentsline{toc}{chapter}{Abbildungsverzeichnis}
+\listoffigures
+\addcontentsline{toc}{chapter}{Tabellenverzeichnis}
+\listoftables
 
-
-%\input{appendices}
 	
 % Generierung des Literaturverzeichnisses
-%\bibliography{/path/to/your/.bib/file}
+\newpage
+\addcontentsline{toc}{chapter}{Literaturverzeichnis}
+\bibliography{literatur}
+\bibliographystyle{ieeetr}
+
 
 \end{document}

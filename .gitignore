@@ -24,3 +24,5 @@
 *.synctex.gz
 *.snm
 *.toc
+*.bcf
+*.run.xml
