@@ -1,0 +1,47 @@
+\documentclass{beamer}
+
+
+\usetheme{Warsaw}
+
+\usepackage{graphicx}
+\usepackage[ngerman]{babel}
+
+\usepackage{default}
+\usepackage{caption}
+\usepackage[utf8]{inputenc}
+
+\setbeamertemplate{caption}{\raggedright\insertcaption\par}
+
+\usetheme{Warsaw}
+%\DeclareUnicodeCharacter{00A0}{ }
+\defbeamertemplate*{footline}{shadow theme}
+{%
+	\leavevmode%
+	\hbox{\begin{beamercolorbox}[wd=.5\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.3cm plus1fil,rightskip=.3cm]{author in head/foot}%
+			\usebeamerfont{author in head/foot}\insertframenumber\,/\,\inserttotalframenumber\hfill\insertshortauthor
+		\end{beamercolorbox}%
+		\begin{beamercolorbox}[wd=.5\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.3cm,rightskip=.3cm plus1fil]{title in head/foot}%
+			\usebeamerfont{title in head/foot}\insertshorttitle%
+		\end{beamercolorbox}}%
+		\vskip0pt%
+	}
+
+\begin{document}
+	
+\title{Die ersten Mikroprozessoren: ein Rechner, ein Chip}
+\author{Michael Kiener, Michael Kratzer}
+\date{\today}
+	
+\maketitle
+\begin{frame}
+	\frametitle{Agenda}
+	\setcounter{tocdepth}{1}
+	\tableofcontents
+	\setcounter{tocdepth}{3}
+\end{frame}
+
+\include{intel4004}
+
+\include{tms1000}
+
+\end{document}

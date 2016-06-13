@@ -190,7 +190,7 @@ Der Befehlssatz enthält alle Instruktionen, die der Intel 4004 ausführen kann.
 	 	\label{fig:instructions1}
 \end{figure}
 Befehle die diese Struktur verwenden sind SRC, welcher den Wert als Adresse verwendet und an ROM und RAM versendet, oder JIN, welcher zu dieser Adresse im Programmspeicher springt. Als letztes gibt es noch die Möglichkeit Daten zu übertragen. LDM lädt beispielsweise die zweiten 4 Bit der Instruktion in den Akkumulator.
-Fünf der insgesamt 45 Befehle bestehen aus 16 anstatt 8 Bit. Sie können deshalb nicht in einem Befehlszyklus bearbeitet werden. Die erste und einfachste Variante ist einfach der Sprungbefehl JUN. Mit diesem Befehl wird ein Sprung zu der Adresse in den drei folgenden Wörtern nach dem Opcode ausgeführt. Eine Adresse besteht normalerweise immer aus 12 Bit und benötigt deshalb zwei Befehlszyklen um geladen zu werden.
+Fünf der insgesamt 45 Befehle bestehen aus 16 anstatt 8 Bit. Sie können deshalb nicht in einem Befehlszyklus bearbeitet werden. Die erste und einfachste Variante ist einfach der Sprungbefehl JUN. Mit diesem Befehl wird ein Sprung zu der Adresse in den drei folgenden Wörtern nach dem Opcode ausgeführt. Eine Adresse besteht normalerweise immer aus 12 Bit und benötigt deshalb zwei Befehlszyklen um geladen zu werden. Der JCN Befehl springt zu einer bestimmten 
 \begin{figure}
 	 	\centering
 	 	\includegraphics[width=0.8\textwidth]{figures/instruction_two.png}
