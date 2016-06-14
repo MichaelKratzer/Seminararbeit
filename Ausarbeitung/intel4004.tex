@@ -182,18 +182,24 @@ Der Befehlszyklus ist eine definierte Abfolge von Schritten, die dazu führen da
 
 \section{Der Befehlssatz}
 \label{ch:befehlssatz}
-Der Befehlssatz enthält alle Instruktionen, die der Intel 4004 ausführen kann. Ein Befehl ist normalerweise 8 Bit lang und besteht aus dem Opcode und dem Modifier. Befehle mit 8 Bit Länge haben drei mögliche Besetzungen für das Modifier Feld. Zum einen kann es die Adresse einer der 16 Speicherzellen des Indexregisters enthalten. Das sind Befehle wie die arithmetischen Operationen, die den Inhalt dieser Adresse mit dem Wert des Akkumulators verrechnen. Die zweite Möglichkeit ist die Adresse eines 8 Bit Wortes innerhalb des Indexregisters. Das \textit{Least-significant-bit} kann hier entweder auf 0 oder 1 gesetzt werden. Das wird als Erweiterung des Opcodes verwendet. 
-\begin{figure}[h]
-	 	\centering
-	 	\includegraphics[width=0.5\textwidth]{figures/instruction_one.png}
-	 	\caption{Befehle mit einem Wort Länge}
-	 	\label{fig:instructions1}
-\end{figure}
+Der Befehlssatz enthält alle Instruktionen, die der Intel 4004 ausführen kann. Ein Befehl ist normalerweise 8 Bit lang und besteht aus dem Opcode und dem Modifier. Befehle mit 8 Bit Länge haben drei mögliche Besetzungen für das Modifier Feld. Zum einen kann es die Adresse einer der 16 Speicherzellen des Indexregisters enthalten. Das sind Befehle wie die arithmetischen Operationen, die den Inhalt dieser Adresse mit dem Wert des Akkumulators verrechnen. Die zweite Möglichkeit ist die Adresse eines 8 Bit Wortes innerhalb des Indexregisters. Das \textit{Least-significant-bit} kann hier entweder auf 0 oder 1 gesetzt werden. Das wird als Erweiterung des Opcodes verwendet.
+\begin{table}[H]
+	\begin{tabular}{c c}
+			 	\includegraphics[width=0.3\textwidth]{figures/instruction_one.png}
+			 	\label{fig:instructions1}
+			 	&
+			 	\includegraphics[width=0.55\textwidth]{figures/instruction_two.png}
+			 	\label{fig:instructions2}
+	\end{tabular}
+	\caption{Ein und zwei Wort Befehle}
+\end{table}
 Befehle die diese Struktur verwenden sind SRC, welcher den Wert als Adresse verwendet und an ROM und RAM versendet, oder JIN, welcher zu dieser Adresse im Programmspeicher springt. Als letztes gibt es noch die Möglichkeit Daten zu übertragen. LDM lädt beispielsweise die zweiten 4 Bit der Instruktion in den Akkumulator.
-Fünf der insgesamt 45 Befehle bestehen aus 16 anstatt 8 Bit. Sie können deshalb nicht in einem Befehlszyklus bearbeitet werden. Die erste und einfachste Variante ist einfach der Sprungbefehl JUN. Mit diesem Befehl wird ein Sprung zu der Adresse in den drei folgenden Wörtern nach dem Opcode ausgeführt. Eine Adresse besteht normalerweise immer aus 12 Bit und benötigt deshalb zwei Befehlszyklen um geladen zu werden. Der JCN Befehl springt zu einer bestimmten 
-\begin{figure}
-	 	\centering
-	 	\includegraphics[width=0.8\textwidth]{figures/instruction_two.png}
-	 	\caption{Befehle mit doppelter Wort Länge}
-	 	\label{fig:instructions2}
-\end{figure}
+Fünf der insgesamt 45 Befehle bestehen aus 16 anstatt 8 Bit. Sie können deshalb nicht in einem Befehlszyklus bearbeitet werden. Die erste und einfachste Variante ist einfach der Sprungbefehl JUN. Mit diesem Befehl wird ein unbedingter Sprung zu der Adresse in den drei folgenden Wörtern nach dem Opcode ausgeführt. Eine Adresse besteht normalerweise immer aus 12 Bit und benötigt deshalb zwei Befehlszyklen um geladen zu werden. Der JCN Befehl lädt im ersten Befehlszyklus eine Bedingung im Modifier. Ist diese Bedingung erfüllt, wird im zweiten Zyklus an die ROM-Adresse im selben Chip gesprungen. Das sind nur ein kleiner Auszug aus den 45 Befehlen die zur Programmierung zur Verfügung stehen. Der Befehlssatz lässt sich in drei Gruppen unterteilen. Die ersten 16 Instruktionen gehören zu den sogenannten Maschinenbefehlen. Die meisten hier vorgestellten Befehle gehören zu dieser Gruppe. In der zweiten Gruppe mit 15 Befehlen, werden Input/Output und RAM Instruktionen zusammengefasst. Die dritte Gruppe umfasst die Steuerung des Akkumulators. Alle diese Funktionen lassen sich in Programmen zusammenfassen, was den Intel 4004 zu einem universal einsetzbaren Computer macht.
+
+ \begin{figure}[ht]
+ 	\centering
+ 	\includegraphics[width=0.8\textwidth]{figures/instruction_machine.png}
+ 	 \includegraphics[width=0.8\textwidth]{figures/instruction_ram.png} 	\includegraphics[width=0.8\textwidth]{figures/instruction_accum.png}
+ 	\caption{Befehlssatz des MCS-4}
+ 	\label{fig:cycle}
+ \end{figure}
